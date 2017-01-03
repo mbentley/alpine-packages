@@ -9,7 +9,7 @@ These are my own Alpine Linux packages.  The packages are available from https:/
   * Docker OSS Engine (`docker-engine`)
     * Note: meant to be used with the `overlay2` storage driver due to statically compiled binaries
 
-## Build instructons
+## Build instructions
 
 ### local testing
   * `make abuild-local`
