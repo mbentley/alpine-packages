@@ -1,9 +1,9 @@
 all: help
 
-help:							## Show this help
+help:		## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-build-local:					## Build local packages for testing
+abuild-local:	## Build packages for local testing
 	@cd ./main &&\
 		cd docker-engine &&\
 		abuild checksum && abuild -r -P /home/mbentley/packages/local &&\
@@ -11,27 +11,25 @@ build-local:					## Build local packages for testing
 		cd docker-engine-cs &&\
 		abuild checksum && abuild -r -P /home/mbentley/packages/local
 
-build-mbentley:					## Build packages for alpine.mbentley.net
+abuild:		## Build packages for alpine.mbentley.net
 	@cd ./main &&\
 		cd docker-engine &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/mbentley &&\
+		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net &&\
 		cd - &&\
 		cd docker-engine-cs &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/mbentley
+		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net
 
-rsync:							## Rsync packages to athena
-	@rsync -avh /home/mbentley/packages/mbentley/ athena:/var/www/alpine.mbentley.net/
+rsync:		## rsync packages to athena
+	@rsync --delete -avh /home/mbentley/packages/alpine.mbentley.net/ athena:/var/www/alpine.mbentley.net/
 
-reindex-local:					## Re-create and sign the local index
+index-local:	## Re-index and sign for local testing
 	@cd /home/mbentley/packages/local/main/x86_64 &&\
 		apk index -o APKINDEX.tar.gz *.apk &&\
 		abuild-sign APKINDEX.tar.gz
 
-reindex-mbentley:				## Re-create and sign the mbentley index
-	@cd /home/mbentley/packages/mbentley/main/x86_64 &&\
+index:		## Re-index and sign for alpine.mbentley.net
+	@cd /home/mbentley/packages/alpine.mbentley.net/main/x86_64 &&\
 		apk index -o APKINDEX.tar.gz *.apk &&\
 		abuild-sign APKINDEX.tar.gz
 
-release: build-mbentley rsync	## Create release for alpine.mbentley.net
-
-.PHONY: all help build-local build-mbentley rsync reindex-local reindex-mbentley
+.PHONY: all help abuild-local abuild rsync index-local index
