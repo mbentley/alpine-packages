@@ -19,6 +19,9 @@ abuild:		## Build packages for alpine.mbentley.net
 		cd docker-engine-cs &&\
 		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net
 
+repocopy:	## copies metadata files from ./repo to the alpine.mbentley.net directory
+	@cp -av ./repo/* /home/mbentley/packages/alpine.mbentley.net/
+
 rsync:		## rsync packages to athena
 	@rsync --delete -avh /home/mbentley/packages/alpine.mbentley.net/ athena:/var/www/alpine.mbentley.net/
 
@@ -32,4 +35,4 @@ index:		## Re-index and sign for alpine.mbentley.net
 		apk index -o APKINDEX.tar.gz *.apk &&\
 		abuild-sign APKINDEX.tar.gz
 
-.PHONY: all help abuild-local abuild rsync index-local index
+.PHONY: all help abuild-local abuild repocopy rsync index-local index

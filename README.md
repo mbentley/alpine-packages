@@ -16,4 +16,5 @@ These are my own Alpine Linux packages.  The packages are available from https:/
 
 ### alpine.mbentley.net
   * `make abuild`
+  * `make repocopy`
   * `make rsync`

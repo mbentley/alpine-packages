@@ -1,0 +1,26 @@
+### automatic
+wget -qO- http://alpine.mbentley.net/get.sh | sh
+
+
+### manual
+# get my public key
+wget "http://alpine.mbentley.net/mbentley@mbentley.net-5865c989.rsa.pub" -O "/etc/apk/keys/mbentley@mbentley.net-5865c989.rsa.pub"
+-or-
+wget "https://raw.githubusercontent.com/mbentley/alpine-packages/master/repo/mbentley%40mbentley.net-5865c989.rsa.pub" -O "/etc/apk/keys/mbentley@mbentley.net-5865c989.rsa.pub"
+
+# set permissions on my key
+chmod 644 /etc/apk/keys/mbentley@mbentley.net-5865c989.rsa.pub
+
+# add my repository
+echo "@mbentley http://alpine.mbentley.net/main" | tee -a /etc/apk/repositories
+
+# update repository indexes
+apk update
+
+
+### installing packages
+# install docker cs engine packages
+apk add docker-engine-cs@mbentley docker-engine-cs-bash-completion@mbentley docker-engine-cs-vim@mbentley
+
+# install docker oss engine packages
+apk add docker-engine@mbentley docker-engine-bash-completion@mbentley docker-engine-vim@mbentley
