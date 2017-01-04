@@ -9,8 +9,11 @@ export GPG_TTY="$(tty)"
 # check to see if a version was provided
 if [ -z "${VER}" ]
 then
+  # show existing tags
+  echo "Last 3 tags:"
+  git tag | tail -n 3
   # prompt user for version
-  echo -n "Provide a version number (e.g. - 1.2.3-0): "
+  echo -ne "\nProvide a version number (e.g. - 1.2.3-0): "
   read VER
 fi
 
