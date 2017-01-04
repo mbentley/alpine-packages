@@ -2,6 +2,8 @@
 
 set -e
 
+VERSION="${VERSION:-1.12}"
+
 if [ "$(id -u)" -ne "0" ]
 then
   echo "You must run as root"
@@ -13,7 +15,7 @@ wget "http://alpine.mbentley.net/mbentley@mbentley.net-5865c989.rsa.pub" -O "/et
 chmod 644 /etc/apk/keys/mbentley@mbentley.net-5865c989.rsa.pub
 
 echo -e "\nAdding repository for 'alpine.mbentley.net'"
-echo "@docker-1.12 http://alpine.mbentley.net/docker/v1.12" | tee -a /etc/apk/repositories
+echo "@docker-${VERSION} http://alpine.mbentley.net/docker/v${VERSION}" | tee -a /etc/apk/repositories
 
 echo -e "\nUpdating repository indexes"
 apk update
