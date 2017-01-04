@@ -1,5 +1,5 @@
 # Contributor: Matt Bentley <mbentley@mbentley.net>
-# Maintainer:
+# Maintainer: Matt Bentley <mbentley@mbentley.net>
 pkgname=docker-engine-cs
 _majorver=1
 _minorver=12

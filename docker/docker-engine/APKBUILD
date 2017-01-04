@@ -1,5 +1,5 @@
 # Contributor: Matt Bentley <mbentley@mbentley.net>
-# Maintainer:
+# Maintainer: Matt Bentley <mbentley@mbentley.net>
 pkgname=docker-engine
 pkgver=1.12.5
 pkgrel=0
