@@ -13,7 +13,7 @@ wget "http://alpine.mbentley.net/mbentley@mbentley.net-5865c989.rsa.pub" -O "/et
 chmod 644 /etc/apk/keys/mbentley@mbentley.net-5865c989.rsa.pub
 
 echo -e "\nAdding repository for 'alpine.mbentley.net'"
-echo "@docker-1.12 http://alpine.mbentley.net/main" | tee -a /etc/apk/repositories
+echo "@docker-1.12 http://alpine.mbentley.net/docker/v1.12" | tee -a /etc/apk/repositories
 
 echo -e "\nUpdating repository indexes"
 apk update
