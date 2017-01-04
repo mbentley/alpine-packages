@@ -12,7 +12,7 @@ wget "https://raw.githubusercontent.com/mbentley/alpine-packages/master/repo/mbe
 chmod 644 /etc/apk/keys/mbentley@mbentley.net-5865c989.rsa.pub
 
 # add my repository
-echo "@mbentley http://alpine.mbentley.net/main" | tee -a /etc/apk/repositories
+echo "@docker http://alpine.mbentley.net/docker" | tee -a /etc/apk/repositories
 
 # update repository indexes
 apk update
@@ -20,7 +20,7 @@ apk update
 
 ### installing packages
 # install docker cs engine packages
-apk add docker-engine-cs@mbentley docker-engine-cs-bash-completion@mbentley docker-engine-cs-vim@mbentley
+apk add docker-engine-cs@docker docker-engine-cs-bash-completion@docker docker-engine-cs-vim@docker
 
 # install docker oss engine packages
-apk add docker-engine@mbentley docker-engine-bash-completion@mbentley docker-engine-vim@mbentley
+apk add docker-engine@docker docker-engine-bash-completion@docker docker-engine-vim@docker

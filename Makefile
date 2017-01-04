@@ -7,7 +7,7 @@ tag:		## Create a new git tag
 	@./scripts/create_tag.sh
 
 abuild-local:	## Build packages for local testing
-	@cd ./main &&\
+	@cd ./docker &&\
 		cd docker-engine &&\
 		abuild checksum && abuild -r -P /home/mbentley/packages/local &&\
 		cd - &&\
@@ -15,7 +15,7 @@ abuild-local:	## Build packages for local testing
 		abuild checksum && abuild -r -P /home/mbentley/packages/local
 
 abuild:		## Build packages for alpine.mbentley.net
-	@cd ./main &&\
+	@cd ./docker &&\
 		cd docker-engine &&\
 		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net &&\
 		cd - &&\
@@ -26,18 +26,18 @@ rsyncrepo:	## rsync metadata files from ./repo to the alpine.mbentley.net direct
 	@rsync --delete -avh -f"- */" -f"+ *" ./repo/ /home/mbentley/packages/alpine.mbentley.net/
 
 rsync:		## rsync packages to athena
-	@rsync --delete -avh /home/mbentley/packages/alpine.mbentley.net/ athena:/var/www/alpine.mbentley.net/
+	@rsync --delete-after -avh /home/mbentley/packages/alpine.mbentley.net/ athena:/var/www/alpine.mbentley.net/
 
 rsyncall: 	## Run both rsyncrepo and rsync
 rsyncall: rsyncrepo rsync
 
 index-local:	## Re-index and sign for local testing
-	@cd /home/mbentley/packages/local/main/x86_64 &&\
+	@cd /home/mbentley/packages/local/docker/x86_64 &&\
 		apk index -o APKINDEX.tar.gz *.apk &&\
 		abuild-sign APKINDEX.tar.gz
 
 index:		## Re-index and sign for alpine.mbentley.net
-	@cd /home/mbentley/packages/alpine.mbentley.net/main/x86_64 &&\
+	@cd /home/mbentley/packages/alpine.mbentley.net/docker/x86_64 &&\
 		apk index -o APKINDEX.tar.gz *.apk &&\
 		abuild-sign APKINDEX.tar.gz
 
