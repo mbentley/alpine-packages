@@ -1,5 +1,5 @@
 ### automatic
-wget -qO- http://alpine.mbentley.net/get.sh | sh
+wget -qO- http://alpine.mbentley.net/get.sh | VERSION=1.12 sh
 
 
 ### manual
