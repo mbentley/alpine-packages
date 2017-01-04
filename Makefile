@@ -3,6 +3,9 @@ all: help
 help:		## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
+tag:		## Create a new git tag
+	@./scripts/create_tag.sh
+
 abuild-local:	## Build packages for local testing
 	@cd ./main &&\
 		cd docker-engine &&\
@@ -35,4 +38,4 @@ index:		## Re-index and sign for alpine.mbentley.net
 		apk index -o APKINDEX.tar.gz *.apk &&\
 		abuild-sign APKINDEX.tar.gz
 
-.PHONY: all help abuild-local abuild rsyncrepo rsync index-local index
+.PHONY: all help tag abuild-local abuild rsyncrepo rsync index-local index
