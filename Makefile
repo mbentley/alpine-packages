@@ -1,3 +1,5 @@
+VERSION ?= v1.12
+
 all: help
 
 help:		## Show this help
@@ -7,20 +9,20 @@ tag:		## Create a new git tag
 	@./scripts/create_tag.sh
 
 abuild-local:	## Build packages for local testing
-	@cd ./docker &&\
+	@cd ./pkgs/$(VERSION) &&\
 		cd docker-engine &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/local &&\
+		abuild checksum && abuild -r -P /home/mbentley/packages/local/docker &&\
 		cd - &&\
 		cd docker-engine-cs &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/local
+		abuild checksum && abuild -r -P /home/mbentley/packages/local/docker
 
 abuild:		## Build packages for alpine.mbentley.net
-	@cd ./docker &&\
+	@cd ./pkgs/$(VERSION) &&\
 		cd docker-engine &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net &&\
+		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net/docker &&\
 		cd - &&\
 		cd docker-engine-cs &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net
+		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net/docker
 
 rsyncrepo:	## rsync metadata files from ./repo to the alpine.mbentley.net directory
 	@rsync --delete -avh -f"- */" -f"+ *" ./repo/ /home/mbentley/packages/alpine.mbentley.net/
