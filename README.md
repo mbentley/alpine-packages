@@ -17,5 +17,4 @@ These are my own Alpine Linux packages.  The packages are available from https:/
 ### alpine.mbentley.net
   * `make tag`
   * `make abuild`
-  * `make rsyncrepo`
-  * `make rsync`
+  * `make rsyncall`

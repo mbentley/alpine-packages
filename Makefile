@@ -28,6 +28,9 @@ rsyncrepo:	## rsync metadata files from ./repo to the alpine.mbentley.net direct
 rsync:		## rsync packages to athena
 	@rsync --delete -avh /home/mbentley/packages/alpine.mbentley.net/ athena:/var/www/alpine.mbentley.net/
 
+rsyncall: 	## Run both rsyncrepo and rsync
+rsyncall: rsyncrepo rsync
+
 index-local:	## Re-index and sign for local testing
 	@cd /home/mbentley/packages/local/main/x86_64 &&\
 		apk index -o APKINDEX.tar.gz *.apk &&\
@@ -38,4 +41,4 @@ index:		## Re-index and sign for alpine.mbentley.net
 		apk index -o APKINDEX.tar.gz *.apk &&\
 		abuild-sign APKINDEX.tar.gz
 
-.PHONY: all help tag abuild-local abuild rsyncrepo rsync index-local index
+.PHONY: all help tag abuild-local abuild rsyncrepo rsync rsyncall index-local index
