@@ -3,7 +3,7 @@
 pkgname=docker-engine
 pkgver=1.12.5
 pkgrel=0
-pkgdesc="Build, Ship, and Run Any App, Anywhere"
+pkgdesc="Docker Engine $pkgver - Build, Ship, and Run Any App, Anywhere"
 url="https://www.docker.com"
 arch="x86_64"
 license="ASL 2.0"
