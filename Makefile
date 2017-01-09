@@ -1,4 +1,5 @@
 VERSION ?= v1.12
+HOME ?= /tmp
 
 all: help
 
@@ -11,34 +12,34 @@ tag:		## Create a new git tag
 abuild-local:	## Build packages for local testing
 	@cd ./pkgs/docker/$(VERSION) &&\
 		cd docker-engine &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/local/docker &&\
+		abuild checksum && abuild -r -P $(HOME)/packages/local/docker &&\
 		cd - &&\
 		cd docker-engine-cs &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/local/docker
+		abuild checksum && abuild -r -P $(HOME)/packages/local/docker
 
 abuild:		## Build packages for alpine.mbentley.net
 	@cd ./pkgs/docker/$(VERSION) &&\
 		cd docker-engine &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net/docker &&\
+		abuild checksum && abuild -r -P $(HOME)/packages/alpine.mbentley.net/docker &&\
 		cd - &&\
 		cd docker-engine-cs &&\
-		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net/docker
+		abuild checksum && abuild -r -P $(HOME)/packages/alpine.mbentley.net/docker
 
 rsyncrepo:	## rsync metadata files from ./repo to the alpine.mbentley.net directory
-	@rsync --delete -avh -f"- */" -f"+ *" ./repo/ /home/mbentley/packages/alpine.mbentley.net/
+	@rsync --delete -avh -f"- */" -f"+ *" ./repo/ $(HOME)/packages/alpine.mbentley.net/
 
 rsync:		## rsync packages to athena
-	@rsync --delete-after -avh /home/mbentley/packages/alpine.mbentley.net/ athena:/var/www/alpine.mbentley.net/
+	@rsync --delete-after -avh $(HOME)/packages/alpine.mbentley.net/ athena:/var/www/alpine.mbentley.net/
 
 rsyncall: 	## Run both rsyncrepo and rsync
 rsyncall: rsyncrepo rsync
 
 index-local:	## Re-index and sign for local testing
-	@cd ./pkgs/docker/docker-engine &&\
-	  REPODEST=/home/mbentley/packages/local abuild index
+	@cd ./pkgs/docker/$(VERSION)/docker-engine &&\
+	  REPODEST=$(HOME)/packages/local/docker abuild index
 
 index:		## Re-index and sign for alpine.mbentley.net
-	@cd ./pkgs/docker/docker-engine &&\
-	  REPODEST=/home/mbentley/packages/alpine.mbentley.net abuild index
+	@cd ./pkgs/docker/$(VERSION)/docker-engine &&\
+	  REPODEST=$(HOME)/packages/alpine.mbentley.net/docker abuild index
 
 .PHONY: all help tag abuild-local abuild rsyncrepo rsync rsyncall index-local index
