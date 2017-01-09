@@ -9,7 +9,7 @@ tag:		## Create a new git tag
 	@./scripts/create_tag.sh
 
 abuild-local:	## Build packages for local testing
-	@cd ./pkgs/$(VERSION) &&\
+	@cd ./pkgs/docker/$(VERSION) &&\
 		cd docker-engine &&\
 		abuild checksum && abuild -r -P /home/mbentley/packages/local/docker &&\
 		cd - &&\
@@ -17,7 +17,7 @@ abuild-local:	## Build packages for local testing
 		abuild checksum && abuild -r -P /home/mbentley/packages/local/docker
 
 abuild:		## Build packages for alpine.mbentley.net
-	@cd ./pkgs/$(VERSION) &&\
+	@cd ./pkgs/docker/$(VERSION) &&\
 		cd docker-engine &&\
 		abuild checksum && abuild -r -P /home/mbentley/packages/alpine.mbentley.net/docker &&\
 		cd - &&\
@@ -34,11 +34,11 @@ rsyncall: 	## Run both rsyncrepo and rsync
 rsyncall: rsyncrepo rsync
 
 index-local:	## Re-index and sign for local testing
-	@cd ./docker/docker-engine &&\
+	@cd ./pkgs/docker/docker-engine &&\
 	  REPODEST=/home/mbentley/packages/local abuild index
 
 index:		## Re-index and sign for alpine.mbentley.net
-	@cd ./docker/docker-engine &&\
+	@cd ./pkgs/docker/docker-engine &&\
 	  REPODEST=/home/mbentley/packages/alpine.mbentley.net abuild index
 
 .PHONY: all help tag abuild-local abuild rsyncrepo rsync rsyncall index-local index
