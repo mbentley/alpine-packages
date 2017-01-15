@@ -29,7 +29,7 @@ rsyncrepo:	## rsync metadata files from ./repo to the alpine.mbentley.net direct
 	@rsync --delete -avh -f"- */" -f"+ *" ./repo/ $(HOME)/packages/alpine.mbentley.net/
 
 rsync:		## rsync packages to athena
-	@rsync --delete-after -avh $(HOME)/packages/alpine.mbentley.net/ athena:/var/www/alpine.mbentley.net/
+	@rsync --delete-after -avh $(HOME)/packages/alpine.mbentley.net/ alpine_repo:/var/www/alpine.mbentley.net/
 
 rsyncall: 	## Run both rsyncrepo and rsync
 rsyncall: rsyncrepo rsync

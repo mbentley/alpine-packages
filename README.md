@@ -1,7 +1,7 @@
 alpine-packages
 ===============
 
-These are my own Alpine Linux packages.  The packages are available from https://alpine.mbentley.net.  For installation instructions, see https://alpine.mbentley.net/INSTRUCTIONS.txt.  My public key is also available [here](./repo/mbentley@mbentley.net-5865c989.rsa.pub).
+These are my own Alpine Linux packages.  The packages are available from http://alpine.mbentley.net.  For installation instructions, see http://alpine.mbentley.net/INSTRUCTIONS.txt.  My public key is also available [here](./repo/mbentley@mbentley.net-5865c989.rsa.pub).
 
 ## Available packages
   * Docker CS Engine (`docker-engine-cs`)
