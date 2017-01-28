@@ -10,7 +10,7 @@ if [ -z "${VER}" ]
 then
   # show existing tags
   echo "Last 3 tags:"
-  git tag | tail -n 3
+  git tag -l --sort=v:refname | tail -n 3
   # prompt user for version
   echo -ne "\nProvide a version number (e.g. - v1.2.3): "
   read VER
