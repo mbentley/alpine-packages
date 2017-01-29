@@ -15,6 +15,4 @@ These are my own Alpine Linux packages.  The packages are available from http://
   * `make abuild-local`
 
 ### alpine.mbentley.net
-  * `make tag`
-  * `make abuild`
-  * `make rsyncall`
+  * `make build`

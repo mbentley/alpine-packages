@@ -6,6 +6,9 @@ all: help
 help:		## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
+build:          ## Run tag, abuild, syncfromrepo, and syncall
+build: tag abuild syncfromrepo syncall
+
 tag:		## Create a new git tag
 	@./scripts/create_tag.sh
 
@@ -25,14 +28,17 @@ abuild:		## Build packages for alpine.mbentley.net
 		cd docker-engine-cs &&\
 		abuild checksum && abuild -r -P $(HOME)/packages/alpine.mbentley.net/docker
 
-rsyncrepo:	## rsync metadata files from ./repo to the alpine.mbentley.net directory
+syncrepo:	## rsync metadata files from ./repo to the alpine.mbentley.net directory
 	@rsync --delete -avh -f"- */" -f"+ *" ./repo/ $(HOME)/packages/alpine.mbentley.net/
 
-rsync:		## rsync packages to athena
+syncfromrepo:   ## rsync from repository to local
+	@rsync -avh alpine_repo:/var/www/alpine.mbentley.net/ $(HOME)/packages/alpine.mbentley.net/
+
+sync:		## rsync packages to alpine.mbentley.net
 	@rsync --delete-after -avh $(HOME)/packages/alpine.mbentley.net/ alpine_repo:/var/www/alpine.mbentley.net/
 
-rsyncall: 	## Run both rsyncrepo and rsync
-rsyncall: rsyncrepo rsync
+syncall: 	## Run both rsyncrepo and rsync
+syncall: syncrepo sync
 
 index-local:	## Re-index and sign for local testing
 	@cd ./pkgs/docker/$(VERSION)/docker-engine &&\
@@ -42,4 +48,4 @@ index:		## Re-index and sign for alpine.mbentley.net
 	@cd ./pkgs/docker/$(VERSION)/docker-engine &&\
 	  REPODEST=$(HOME)/packages/alpine.mbentley.net/docker abuild index
 
-.PHONY: all help tag abuild-local abuild rsyncrepo rsync rsyncall index-local index
+.PHONY: all help build tag abuild-local abuild syncrepo syncfromrepo sync syncall index-local index
