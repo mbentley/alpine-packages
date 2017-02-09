@@ -7,7 +7,7 @@ help:		## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 build:          ## Run tag, abuild, syncfromrepo, and syncall
-build: tag abuild syncfromrepo syncall
+build: tag syncfromrepo abuild syncall
 
 tag:		## Create a new git tag
 	@./scripts/create_tag.sh
@@ -37,7 +37,7 @@ syncfromrepo:   ## rsync from repository to local
 sync:		## rsync packages to alpine.mbentley.net
 	@rsync --delete-after -avh $(HOME)/packages/alpine.mbentley.net/ alpine_repo:/var/www/alpine.mbentley.net/
 
-syncall: 	## Run both rsyncrepo and rsync
+syncall: 	## Run both syncrepo and sync
 syncall: syncrepo sync
 
 index-local:	## Re-index and sign for local testing
