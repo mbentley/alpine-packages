@@ -4,9 +4,9 @@ pkgname=docker-engine-cs
 _majorver=1
 _minorver=12
 _bugfixver=6
-_csver=cs7
+_csver=cs8
 pkgver=$_majorver.$_minorver.$_bugfixver
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker CS Engine $_majorver.$_minorver.$_bugfixver-$_csver - Build, Ship, and Run Any App, Anywhere"
 url="https://www.docker.com"
 arch="x86_64"
@@ -84,19 +84,19 @@ vim() {
         install -Dm644 "$builddir"dockerfile.vim.syntax \
           "$subpkgdir"/usr/share/vim/vimfiles/syntax/dockerfile.vim
 }
-md5sums="5129e01ce957eef7df260f06bec032ed  docker-engine-cs-1.12.6-cs7.tgz
+md5sums="947c67ef28d412a7ef3f1f20060749a1  docker-engine-cs-1.12.6-cs8.tgz
 4a33361e0937bc845796f2fe8b5c1549  docker.confd
 64a1acec6f53d1b0bdd218185b0707b1  docker.initd
 68cb0205028874522170850d8849d7ca  docker.bash
 e76e92726c4bb845ea0aaffeba4e22df  dockerfile.vim.ftdetect
 98243e8d389940972b442c1e04c29d3e  dockerfile.vim.syntax"
-sha256sums="189e228702c7e4ed971d8296f517565f44ccfb5feca234eb9c86f8bc22a1f4a6  docker-engine-cs-1.12.6-cs7.tgz
+sha256sums="d9b6e5ef3943a23e3288371f6b7afedba4ba8366a1325442a4f2ef9905e86787  docker-engine-cs-1.12.6-cs8.tgz
 35c71ab4ef3830888b0260a923340f6d59c9ced080b2ab75751d7aa6870fe774  docker.confd
 66b6d024a959b81b47e1faf300f554b90b5ecb10bde910417edd1f3f1035c017  docker.initd
 aa430fd51b06c4dcdd1f17bb6ce8d5c004d61a319202d74e1c80b671a14f5f0b  docker.bash
 a2f400471406858aa4b9fdc8f40ed7a3699e4bc389eea09e3416a360d5a180da  dockerfile.vim.ftdetect
 ae976d4930fc3c81066447f14ccb9f545eab2d7d3d9b8cf9f595ef02fe7e4860  dockerfile.vim.syntax"
-sha512sums="2b82a5334b5827a97bbadfc76410c081f344f73e82e351ac331d1bca09314613132865693673f65773d05046a6bc68093bae1742651def0332279406fd22c61d  docker-engine-cs-1.12.6-cs7.tgz
+sha512sums="d800c26f2c9354a20234b5c9abecd834d8f3016a6fa4f08bd44fcd62bceb2a11e61d62f23c97bac509e8b226ab69e388d6044a0c9780d2bf380c4d4023f6667d  docker-engine-cs-1.12.6-cs8.tgz
 d46a10051fb1b1298f81f44419b2aa6de2da4489cc2d23a9cbb43a228d60322c7ed5f05c1b7c6bc437fbead157b5cf96d94568f14236dbe0e3a1c84ac1cf4b7f  docker.confd
 5582f21d48425bd04c823c50e335349ba7f52d980958743823dfa99f9308df619fc2af46f5e67c229d3c7304fc9bead0ce5a173316f78c8154bedfb348d0f100  docker.initd
 195401408f9f7fd1a3b986d7245305fc227257a73f906f4d144d61bdeaeb4aff42db5d15e6a0c2fda5dd736e45954aaf6ee7202774652333ec40da74a6ec5b42  docker.bash
