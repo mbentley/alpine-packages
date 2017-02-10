@@ -2,7 +2,7 @@
 # Maintainer: Matt Bentley <mbentley@mbentley.net>
 pkgname=docker-engine
 pkgver=1.13.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Docker Engine $pkgver - Build, Ship, and Run Any App, Anywhere"
 url="https://www.docker.com"
 arch="x86_64"
@@ -49,6 +49,9 @@ package() {
 
         install -Dm755 docker/docker-runc \
           "$pkgdir"/usr/bin/docker-runc || return 1
+
+        install -Dm755 docker/docker-init \
+          "$pkgdir"/usr/bin/docker-init || return 1
 
         install -Dm755 docker/dockerd \
           "$pkgdir"/usr/bin/dockerd || return 1
