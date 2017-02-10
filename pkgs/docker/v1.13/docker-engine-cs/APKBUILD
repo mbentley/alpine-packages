@@ -6,7 +6,7 @@ _minorver=13
 _bugfixver=1
 _csver=cs1
 pkgver=$_majorver.$_minorver.$_bugfixver
-pkgrel=0
+pkgrel=1
 pkgdesc="Docker CS Engine $_majorver.$_minorver.$_bugfixver-$_csver - Build, Ship, and Run Any App, Anywhere"
 url="https://www.docker.com"
 arch="x86_64"
@@ -53,6 +53,9 @@ package() {
 
         install -Dm755 docker/docker-runc \
           "$pkgdir"/usr/bin/docker-runc || return 1
+
+        install -Dm755 docker/docker-init \
+          "$pkgdir"/usr/bin/docker-init || return 1
 
         install -Dm755 docker/dockerd \
           "$pkgdir"/usr/bin/dockerd || return 1
