@@ -6,10 +6,10 @@ all: help
 help:		## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-build-local:	## Run tag, abuild, syncfromrepo, and syncall
+build-local:	## Run checksum and abuild-local
 build-local: checksum abuild-local
 
-build:          ## Run tag, abuild, syncfromrepo, and syncall
+build:          ## Run tag, syncfromrepo, checksum, abuild, and syncall
 build: tag syncfromrepo checksum abuild syncall
 
 tag:		## Create a new git tag
