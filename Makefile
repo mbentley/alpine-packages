@@ -1,4 +1,4 @@
-VERSION ?= v1.13
+VERSION ?= v17.03
 HOME ?= /tmp
 
 all: help
@@ -16,28 +16,13 @@ tag:		## Create a new git tag
 	@./scripts/create_tag.sh
 
 checksum:	## Generate checksums for files in APKBUILD files
-	@cd ./pkgs/docker/$(VERSION) &&\
-		cd docker-engine &&\
-		abuild checksum &&\
-		cd - &&\
-		cd docker-engine-cs &&\
-		abuild checksum
+	@./scripts/abuild_checksum.sh docker $(VERSION)
 
 abuild-local:	## Build packages for local testing
-	@cd ./pkgs/docker/$(VERSION) &&\
-		cd docker-engine &&\
-		abuild -r -P $(HOME)/packages/local/docker &&\
-		cd - &&\
-		cd docker-engine-cs &&\
-		abuild -r -P $(HOME)/packages/local/docker
+	@./scripts/abuild_build.sh local docker $(VERSION)
 
 abuild:		## Build packages for alpine.mbentley.net
-	@cd ./pkgs/docker/$(VERSION) &&\
-		cd docker-engine &&\
-		abuild -r -P $(HOME)/packages/alpine.mbentley.net/docker &&\
-		cd - &&\
-		cd docker-engine-cs &&\
-		abuild -r -P $(HOME)/packages/alpine.mbentley.net/docker
+	@./scripts/abuild_build.sh alpine.mbentley.net docker $(VERSION)
 
 syncrepo:	## rsync metadata files from ./repo to the alpine.mbentley.net directory
 	@rsync --delete -avh -f"- */" -f"+ *" ./repo/ $(HOME)/packages/alpine.mbentley.net/
@@ -52,11 +37,9 @@ syncall: 	## Run both syncrepo and sync
 syncall: syncrepo sync
 
 index-local:	## Re-index and sign for local testing
-	@cd ./pkgs/docker/$(VERSION)/docker-engine &&\
-	  REPODEST=$(HOME)/packages/local/docker abuild index
+	@./scripts/abuild_index.sh local docker $(VERSION)
 
 index:		## Re-index and sign for alpine.mbentley.net
-	@cd ./pkgs/docker/$(VERSION)/docker-engine &&\
-	  REPODEST=$(HOME)/packages/alpine.mbentley.net/docker abuild index
+	@./scripts/abuild_index.sh alpine.mbentley.net docker $(VERSION)
 
 .PHONY: all help build build-local checksum tag abuild-local abuild syncrepo syncfromrepo sync syncall index-local index
