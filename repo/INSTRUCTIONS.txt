@@ -1,5 +1,5 @@
 ### automatic
-wget -qO- http://alpine.mbentley.net/get.sh | VERSION=1.12 sh
+wget -qO- http://alpine.mbentley.net/get.sh | VERSION=17.03 sh
 
 
 ### manual
@@ -12,7 +12,7 @@ wget "https://raw.githubusercontent.com/mbentley/alpine-packages/master/repo/mbe
 chmod 644 /etc/apk/keys/mbentley@mbentley.net-5865c989.rsa.pub
 
 # add my repository
-echo "@docker-1.12 http://alpine.mbentley.net/docker/v1.12" | tee -a /etc/apk/repositories
+echo "@docker-17.03 http://alpine.mbentley.net/docker/v17.03" | tee -a /etc/apk/repositories
 
 # update repository indexes
 apk update
@@ -20,7 +20,7 @@ apk update
 
 ### installing packages
 # install docker cs engine packages
-apk add docker-engine-cs@docker-1.12
+apk add docker-engine-cs@docker-1.13
 
 # install docker oss engine packages
-apk add docker-engine@docker-1.12
+apk add docker-engine@docker-17.03
