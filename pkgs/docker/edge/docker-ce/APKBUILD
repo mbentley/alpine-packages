@@ -3,7 +3,7 @@
 pkgname=docker-ce
 pkgver=17.04.0
 pkgrel=0
-pkgdesc="Docker Engine $pkgver Community Edition"
+pkgdesc="Docker Engine $pkgver Community Edition (Edge)"
 url="https://www.docker.com"
 arch="x86_64"
 license="ASL 2.0"
