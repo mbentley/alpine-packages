@@ -1,7 +1,7 @@
 # Contributor: Matt Bentley <mbentley@mbentley.net>
 # Maintainer: Matt Bentley <mbentley@mbentley.net>
 pkgname=docker-ce
-pkgver=17.04.0
+pkgver=17.05.0
 pkgrel=0
 pkgdesc="Docker Engine $pkgver Community Edition (Edge)"
 url="https://www.docker.com"
@@ -84,21 +84,21 @@ vim() {
         install -Dm644 "$builddir"dockerfile.vim.syntax \
           "$subpkgdir"/usr/share/vim/vimfiles/syntax/dockerfile.vim
 }
-md5sums="b48684ab01ba2068ca44a21da92ce169  docker-ce-17.04.0.tgz
+md5sums="1058a7eb3f05833475fcc29fc4b11011  docker-ce-17.05.0.tgz
 4a33361e0937bc845796f2fe8b5c1549  docker.confd
 64a1acec6f53d1b0bdd218185b0707b1  docker.initd
-4364d854b2d91ea177a93d6fbbc3c880  docker.bash
+0675ddce9380b2a1f429dac2f61032c0  docker.bash
 e76e92726c4bb845ea0aaffeba4e22df  dockerfile.vim.ftdetect
 98243e8d389940972b442c1e04c29d3e  dockerfile.vim.syntax"
-sha256sums="c52cff62c4368a978b52e3d03819054d87bcd00d15514934ce2e0e09b99dd100  docker-ce-17.04.0.tgz
+sha256sums="340e0b5a009ba70e1b644136b94d13824db0aeb52e09071410f35a95d94316d9  docker-ce-17.05.0.tgz
 35c71ab4ef3830888b0260a923340f6d59c9ced080b2ab75751d7aa6870fe774  docker.confd
 66b6d024a959b81b47e1faf300f554b90b5ecb10bde910417edd1f3f1035c017  docker.initd
-e57b883109e0789ff7009ecb42fc80e2819468fba2cc00c884f44a3146402056  docker.bash
+15eca36e3b64d906000b519396d0e4967838f37a1064f365502f480f4664a611  docker.bash
 a2f400471406858aa4b9fdc8f40ed7a3699e4bc389eea09e3416a360d5a180da  dockerfile.vim.ftdetect
 ae976d4930fc3c81066447f14ccb9f545eab2d7d3d9b8cf9f595ef02fe7e4860  dockerfile.vim.syntax"
-sha512sums="c1b2a68671193ec21b0c4f225e0ea10591af71a099598f72f06ca95edf507d27239fe55227856ab3add8213f4dd7487a115fc4a0a449abe405c5e157f9fdbc60  docker-ce-17.04.0.tgz
+sha512sums="a2df8993fc5af7dd4420378baa733d384e79edc0b298120c15f13f6d1f21ea5600195919d96f55ca6d5cf129dfb0cacdea20b4cacfc9420fc9bc4ece083ea3e5  docker-ce-17.05.0.tgz
 d46a10051fb1b1298f81f44419b2aa6de2da4489cc2d23a9cbb43a228d60322c7ed5f05c1b7c6bc437fbead157b5cf96d94568f14236dbe0e3a1c84ac1cf4b7f  docker.confd
 5582f21d48425bd04c823c50e335349ba7f52d980958743823dfa99f9308df619fc2af46f5e67c229d3c7304fc9bead0ce5a173316f78c8154bedfb348d0f100  docker.initd
-9906fe173b154502c8c7f00272af18a95b77b83b3b7d08ccc68fe51b3451429be795aaf779de9c78bcebe9f7d25575bc31ddc7c892bf38c9ca74023883c88675  docker.bash
+f49d0595d4c77dfb030bdd1b88c51d4a4c1bf51294d67eeb54a4b85a11ddfa91f490b0a168167eedb12ac171fbbd874bf6868999667c7dc55820e9ab217421e9  docker.bash
 dbfce26bad4d74d6f1989790bb9f8a87fa019380c7c09c875755833d65afbfd462a56343a9328bb2552c30d1115d91d2bbcfdb7ea55fa6322fb4bea5ce43cba0  dockerfile.vim.ftdetect
 6910857903a6ef2b8ec2d36ff701a172991fdcd1821a09acbd329a0c34112e265651f0376b7165e5debaa52424cd37d9e40c1d080629c8bd9662c4e283eae9e7  dockerfile.vim.syntax"
