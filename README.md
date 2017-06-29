@@ -27,4 +27,4 @@ These are my own Alpine Linux packages.  The packages are available from http://
   * `make checksum abuild-local`
 
 ### alpine.mbentley.net
-  * `make checksm build`
+  * `make checksum build`
