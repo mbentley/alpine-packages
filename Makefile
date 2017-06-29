@@ -1,4 +1,4 @@
-VERSION ?= v17.03
+VERSION ?= v17.06
 HOME ?= /tmp
 
 all: help
