@@ -5,7 +5,7 @@ These are my own Alpine Linux packages.  The packages are available from http://
 
 ## Available packages
   * Docker CE (`docker-ce`)
-    * Engine versions: `17.03`, `edge`
+    * Engine versions: `17.06`, `17.03`, `edge`
     * Note: meant to be used with the `overlay2` storage driver due to statically compiled binaries
   * Docker EE (`docker-ee`)
     * Not available; binaries are only available via Docker Store for supported operating systems (see https://blog.docker.com/2017/03/docker-enterprise-edition/)
