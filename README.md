@@ -21,10 +21,10 @@ These are my own Alpine Linux packages.  The packages are available from http://
 ## Build instructions
 
 ### Build latest edge
-  * `VERSION=edge make build`
+  * `VERSION=edge make checksum build`
 
 ### local testing
-  * `make abuild-local`
+  * `make checksum abuild-local`
 
 ### alpine.mbentley.net
-  * `make build`
+  * `make checksm build`
