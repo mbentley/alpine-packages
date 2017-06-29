@@ -25,13 +25,13 @@ abuild:		## Build packages for alpine.mbentley.net
 	@./scripts/abuild_build.sh alpine.mbentley.net docker $(VERSION)
 
 syncrepo:	## rsync metadata files from ./repo to the alpine.mbentley.net directory
-	@rsync --delete -avh -f"- */" -f"+ *" ./repo/ $(HOME)/packages/alpine.mbentley.net/
+	@rsync --progress --delete -avh -f"- */" -f"+ *" ./repo/ $(HOME)/packages/alpine.mbentley.net/
 
 syncfromrepo:   ## rsync from repository to local
-	@rsync -avh alpine_repo:/var/www/alpine.mbentley.net/ $(HOME)/packages/alpine.mbentley.net/
+	@rsync --progress -avh alpine_repo:/var/www/alpine.mbentley.net/ $(HOME)/packages/alpine.mbentley.net/
 
 sync:		## rsync packages to alpine.mbentley.net
-	@rsync --delete-after -avh $(HOME)/packages/alpine.mbentley.net/ alpine_repo:/var/www/alpine.mbentley.net/
+	@rsync --progress --delete-after -avh $(HOME)/packages/alpine.mbentley.net/ alpine_repo:/var/www/alpine.mbentley.net/
 
 syncall: 	## Run both syncrepo and sync
 syncall: syncrepo sync
