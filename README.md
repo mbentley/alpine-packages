@@ -20,11 +20,17 @@ These are my own Alpine Linux packages.  The packages are available from http://
 
 ## Build instructions
 
-### Build latest edge
-  * `VERSION=edge make checksum build`
+### Update APKBUILD files as necessary
+
+### Re-create checksums so they're in git
+  * `VERSION=v17.03 make checksum`
+
+### Commit and merge change branch
+
+### Check out master and build (which takes care of the rest)
+  * `VERSION=v17.03 make checksum build`
+
+## Local testing
 
 ### local testing
   * `make checksum abuild-local`
-
-### alpine.mbentley.net
-  * `make checksum build`
