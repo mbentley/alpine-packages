@@ -10,7 +10,7 @@ license="ASL 2.0"
 depends="iptables git xz"
 makedepends=""
 replaces="docker-engine"
-options="!strip"
+options="!strip !check"
 install="$pkgname.pre-install"
 subpackages="
         $pkgname-bash-completion:bashcomp:noarch
