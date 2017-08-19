@@ -1,8 +1,8 @@
 # Contributor: Matt Bentley <mbentley@mbentley.net>
 # Maintainer: Matt Bentley <mbentley@mbentley.net>
 pkgname=docker-ce
-pkgver=17.03.1
-pkgrel=1
+pkgver=17.03.2
+pkgrel=2
 pkgdesc="Docker Engine $pkgver Community Edition"
 url="https://www.docker.com"
 arch="x86_64"
