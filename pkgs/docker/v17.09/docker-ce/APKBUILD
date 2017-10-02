@@ -1,8 +1,8 @@
 # Contributor: Matt Bentley <mbentley@mbentley.net>
 # Maintainer: Matt Bentley <mbentley@mbentley.net>
 pkgname=docker-ce
-pkgver=17.06.2
-pkgrel=2
+pkgver=17.09.0
+pkgrel=0
 pkgdesc="Docker Engine $pkgver Community Edition"
 url="https://www.docker.com"
 arch="x86_64"
@@ -84,9 +84,9 @@ vim() {
         install -Dm644 "$builddir"dockerfile.vim.syntax \
           "$subpkgdir"/usr/share/vim/vimfiles/syntax/dockerfile.vim
 }
-sha512sums="f72c67531534650e9192c62a2ec400f1fe96c220a1afa08916eed2d4cc70a4d01e1806fbf21c29b34bc5760334131c7cce5cc3a24dcd05b01229c91a43b14081  docker-ce-17.06.2.tgz
+sha512sums="74b2be41086e14cfe1188a0017603129f0b472b85149981400e699ab15f99458c36b6953d5a50d4a780fbbac36eccbd602e7aa66d76f7ec76a83254e26428f0d  docker-ce-17.09.0.tgz
 d46a10051fb1b1298f81f44419b2aa6de2da4489cc2d23a9cbb43a228d60322c7ed5f05c1b7c6bc437fbead157b5cf96d94568f14236dbe0e3a1c84ac1cf4b7f  docker.confd
 5582f21d48425bd04c823c50e335349ba7f52d980958743823dfa99f9308df619fc2af46f5e67c229d3c7304fc9bead0ce5a173316f78c8154bedfb348d0f100  docker.initd
-3ae2dca2f89a1fbb66d3ed7a2be8d22742a875197b58426ef090667898bed96884e056a63a475379fff0c1c1298f592b26dda8d2df0472b8887f02c5818bb7c1  docker.bash
+d6e1d3f254f249f32288aa8f0902f5be2458acc14281b8eb931dfa05253e47d22f0112cabaf63cd55161fb346041afe7aa70f64ef99df5cdd1171812ec1c6e3e  docker.bash
 dbfce26bad4d74d6f1989790bb9f8a87fa019380c7c09c875755833d65afbfd462a56343a9328bb2552c30d1115d91d2bbcfdb7ea55fa6322fb4bea5ce43cba0  dockerfile.vim.ftdetect
 6910857903a6ef2b8ec2d36ff701a172991fdcd1821a09acbd329a0c34112e265651f0376b7165e5debaa52424cd37d9e40c1d080629c8bd9662c4e283eae9e7  dockerfile.vim.syntax"
