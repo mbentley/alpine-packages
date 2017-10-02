@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION="${VERSION:-17.06}"
+VERSION="${VERSION:-17.09}"
 
 if [ "$(id -u)" -ne "0" ]
 then
@@ -14,10 +14,10 @@ echo "Adding public key 'mbentley@mbentley.net-5865c989.rsa.pub'"
 wget "http://alpine.mbentley.net/mbentley@mbentley.net-5865c989.rsa.pub" -O "/etc/apk/keys/mbentley@mbentley.net-5865c989.rsa.pub"
 chmod 644 /etc/apk/keys/mbentley@mbentley.net-5865c989.rsa.pub
 
-printf "\nAdding repository for 'alpine.mbentley.net'\n"
+printf "\\nAdding repository for 'alpine.mbentley.net'\\n"
 echo "@docker-${VERSION} http://alpine.mbentley.net/docker/v${VERSION}" | tee -a /etc/apk/repositories
 
-printf "\nUpdating repository indexes\n"
+printf "\\nUpdating repository indexes\\n"
 apk update
 
-printf "\ndone.\n"
+printf "\\ndone.\\n"
