@@ -4945,7 +4945,6 @@ _docker() {
 		secret
 		service
 		stack
-		swarm
 		system
 		volume
 	)
@@ -4989,6 +4988,7 @@ _docker() {
 		start
 		stats
 		stop
+		swarm
 		tag
 		top
 		unpause

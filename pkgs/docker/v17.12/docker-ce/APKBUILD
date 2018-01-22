@@ -1,9 +1,9 @@
 # Contributor: Matt Bentley <mbentley@mbentley.net>
 # Maintainer: Matt Bentley <mbentley@mbentley.net>
 pkgname=docker-ce
-pkgver=18.01.0
+pkgver=17.12.0
 pkgrel=0
-pkgdesc="Docker Engine $pkgver Community Edition (Edge)"
+pkgdesc="Docker Engine $pkgver Community Edition"
 url="https://www.docker.com"
 arch="x86_64"
 license="ASL 2.0"
@@ -17,7 +17,7 @@ subpackages="
         $pkgname-vim:vim:noarch
         "
 source="
-        $pkgname-$pkgver.tgz::https://download.docker.com/linux/static/edge/x86_64/docker-${pkgver}-ce.tgz
+        $pkgname-$pkgver.tgz::https://download.docker.com/linux/static/stable/x86_64/docker-${pkgver}-ce.tgz
         docker.confd
         docker.initd
         docker.bash
@@ -84,9 +84,9 @@ vim() {
         install -Dm644 "$builddir"dockerfile.vim.syntax \
           "$subpkgdir"/usr/share/vim/vimfiles/syntax/dockerfile.vim
 }
-sha512sums="c3a0f8683c2fb022f39bfb2706f0072f86a18b3dbe7c894e759f6ad07fc27892b9231e85d6365f51fcff85c63dc644ef4b74d9efcb1ce8dffa9622fadca27606  docker-ce-18.01.0.tgz
+sha512sums="72d43075803746ee40c2e7c612e420c691f6c4444fd947c2a3b30dd96c14e01ba99e1e380678fa1ed778ea87a800e412f05c8e87f90e1353ac389e90a73ccd2d  docker-ce-17.12.0.tgz
 5583f329b9cd7af61cd17e4e9c29ff0d51ae4b23f33ae98767c0a93939d3e834d3f12086bc716f68def7fc9774f67ea5c21624f3cf0b2f90d6a16dcc7e66ac5c  docker.confd
 4332ec00e2c7303aad97a0501e21fa54fe7dd4648c2136681f751ec69e6c916d7a8681168c48cb186d2384b28b5c706090553786ee7d373e0da2fa6ff1630c54  docker.initd
-23fe4bb4bc73d0feb8fd9f5391dbbc24edf35dbab99d9557d0d5f5f19846b48dbcd7ec12a97f7c62f67b3d65510283b0d8c4b35b0249efa0cdb5a65b784b6335  docker.bash
+e887fd176e0f29710f565c2f70798fd7a02dc5afc5e74714c5e58d36ee7400e26130ebc2fcd4e3841d0bb7f4e48a2226857e495d72f2d58b15027674572beb84  docker.bash
 566d1ab5ce04ba10faf8b889e1a746a5b27f768009ef3adc500be5c7cbc1e1b8b171082fdeb777f7b6e18016991931c34e88757587bf23b0523ea451021bc4a4  dockerfile.vim.ftdetect
 6910857903a6ef2b8ec2d36ff701a172991fdcd1821a09acbd329a0c34112e265651f0376b7165e5debaa52424cd37d9e40c1d080629c8bd9662c4e283eae9e7  dockerfile.vim.syntax"
