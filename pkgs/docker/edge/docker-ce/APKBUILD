@@ -2,7 +2,7 @@
 # Maintainer: Matt Bentley <mbentley@mbentley.net>
 pkgname=docker-ce
 pkgver=18.02.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Docker Engine $pkgver Community Edition (Edge)"
 url="https://www.docker.com"
 arch="x86_64"
