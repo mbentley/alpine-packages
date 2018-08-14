@@ -1,0 +1,92 @@
+# Contributor: Matt Bentley <mbentley@mbentley.net>
+# Maintainer: Matt Bentley <mbentley@mbentley.net>
+pkgname=docker-ce
+pkgver=18.06.0
+pkgrel=0
+pkgdesc="Docker Engine $pkgver Community Edition"
+url="https://www.docker.com"
+arch="x86_64"
+license="ASL 2.0"
+depends="iptables git procps xz"
+makedepends=""
+replaces="docker-engine"
+options="!strip !check"
+install="$pkgname.pre-install"
+subpackages="
+        $pkgname-bash-completion:bashcomp:noarch
+        $pkgname-vim:vim:noarch
+        "
+source="
+        $pkgname-$pkgver.tgz::https://download.docker.com/linux/static/stable/x86_64/docker-${pkgver}-ce.tgz
+        docker.confd
+        docker.initd
+        docker.bash
+        dockerfile.vim.ftdetect
+        dockerfile.vim.syntax
+        "
+builddir="$srcdir/"
+
+build() {
+	cd "$builddir"
+}
+
+package() {
+	cd "$builddir"
+
+        install -Dm755 docker/docker \
+          "$pkgdir"/usr/bin/docker || return 1
+
+        install -Dm755 docker/docker-containerd \
+          "$pkgdir"/usr/bin/docker-containerd || return 1
+
+        install -Dm755 docker/docker-containerd-ctr \
+          "$pkgdir"/usr/bin/docker-containerd-ctr || return 1
+
+        install -Dm755 docker/docker-containerd-shim \
+          "$pkgdir"/usr/bin/docker-containerd-shim || return 1
+
+        install -Dm755 docker/docker-proxy \
+          "$pkgdir"/usr/bin/docker-proxy || return 1
+
+        install -Dm755 docker/docker-runc \
+          "$pkgdir"/usr/bin/docker-runc || return 1
+
+        install -Dm755 docker/docker-init \
+          "$pkgdir"/usr/bin/docker-init || return 1
+
+        install -Dm755 docker/dockerd \
+          "$pkgdir"/usr/bin/dockerd || return 1
+
+        install -Dm755 docker.initd \
+          "$pkgdir"/etc/init.d/docker
+
+        install -Dm644 docker.confd \
+          "$pkgdir"/etc/conf.d/docker
+}
+
+bashcomp() {
+	depends=""
+	pkgdesc="Bash completion for Docker"
+	install_if="$pkgname=$pkgver-r$pkgrel bash-completion"
+
+	install -Dm644 "$builddir"docker.bash \
+          "$subpkgdir"/usr/share/bash-completion/completions/docker
+}
+
+vim() {
+        depends=""
+        pkgdesc="Vim syntax for Docker"
+	install_if="$pkgname=$pkgver-r$pkgrel vim"
+
+        install -Dm644 "$builddir"dockerfile.vim.ftdetect \
+          "$subpkgdir"/usr/share/vim/vimfiles/ftdetect/dockerfile.vim
+
+        install -Dm644 "$builddir"dockerfile.vim.syntax \
+          "$subpkgdir"/usr/share/vim/vimfiles/syntax/dockerfile.vim
+}
+sha512sums="ad236038a2c987eaaf09d9c967847888016c731601d9769716f611c1df8ca45e242932e43ec032a58fae8855458378a7cf70b242cb130d3c11233b3590528de6  docker-ce-18.06.0.tgz
+5583f329b9cd7af61cd17e4e9c29ff0d51ae4b23f33ae98767c0a93939d3e834d3f12086bc716f68def7fc9774f67ea5c21624f3cf0b2f90d6a16dcc7e66ac5c  docker.confd
+4332ec00e2c7303aad97a0501e21fa54fe7dd4648c2136681f751ec69e6c916d7a8681168c48cb186d2384b28b5c706090553786ee7d373e0da2fa6ff1630c54  docker.initd
+296d07bc92c25cb5c1977fa728b8af771846446dc76336af6a8559755e215bb25f2c39600babd88c5b365feb1c1b6f77f43c806dbd6ec2e53eb9611ba97992fd  docker.bash
+aa95c9d12b51b289b315433d00336a9719ab65a3f4f3b73e30a4c3f1b77bebd2a7aca2bc21b7a18b3e5f3b3399c9818419477ea80ada3e11ad14e7f65e410956  dockerfile.vim.ftdetect
+6910857903a6ef2b8ec2d36ff701a172991fdcd1821a09acbd329a0c34112e265651f0376b7165e5debaa52424cd37d9e40c1d080629c8bd9662c4e283eae9e7  dockerfile.vim.syntax"
