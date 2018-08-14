@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION="${VERSION:-17.09}"
+VERSION="${VERSION:-18.06}"
 
 if [ "$(id -u)" -ne "0" ]
 then
